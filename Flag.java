@@ -13,56 +13,57 @@ public class Flag {
 	}
 	
 	public void InvariantA(color [] colors) {
-		int r_spot = 0, w_spot = 0, b_spot = 0; 
+		int r_spot = -1, w_spot = -1, b_spot = -1;  
 		for (color some_color : colors) {
 			switch(some_color) {
 				case red: 
-					color temp = some_color; 
-					some_color = colors[b_spot]; 
-					colors[b_spot] = colors[w_spot]; 
-					colors[r_spot] = temp; 
 					r_spot++; w_spot++; b_spot++; 
+					color temp = colors[r_spot]; 
+					colors[r_spot] = colors[b_spot]; 
+					colors[b_spot] = colors[w_spot]; 
+					colors[w_spot] = temp; 
 					break; 
 				case white: 
-					color temp_w = some_color; 
-					some_color = colors[b_spot]; 
-					colors[w_spot] = temp_w; 
 					w_spot++; b_spot++; 
+					color temp_w = colors[w_spot]; 
+					colors[w_spot] = colors[b_spot]; 
+					colors[b_spot] = temp_w; 
 					break; 
 				case blue: 
 					b_spot++; 
 					break; 
 			}
+			
 		}
 	}
 	
 	public void InvariantD(color [] colors) {
-		int size_color = colors.length - 1; 
-		
-		int r_spot = size_color, w_spot = size_color, b_spot = size_color; 
-		for (int i = size_color; i <= 0; i--) {
-			color some_color = colors[i]; 
-			switch(some_color) {
+		int size_color = colors.length; 
+		int w_spot = size_color, b_spot = size_color, r_spot = size_color; 
+		for (int i = size_color - 1; i >= 0; i--) {
+			switch(colors[i]) {
 				case blue: 
-					b_spot--; w_spot--; 
-					color temp = some_color; 
-					some_color = colors[w_spot]; 
+					b_spot--; w_spot--; r_spot--; 
+					color temp = colors[r_spot]; 
+					colors[r_spot] = colors[w_spot]; 
 					colors[w_spot] = colors[b_spot]; 
 					colors[b_spot] = temp; 
-					r_spot--;
 					break; 
 				case white: 
-					w_spot--; 
-					color temp_w = some_color; 
-					some_color = colors[w_spot]; 
+					w_spot--; r_spot--; 
+					color temp_w = colors[r_spot]; 
+					colors[r_spot] = colors[w_spot]; 
 					colors[w_spot] = temp_w; 
-					r_spot--; 
 					break; 
 				case red: 
 					r_spot--; 
 					break; 
 			}
 		}
+		for (color some_color2 : colors) {
+			System.out.println(some_color2);
+		}
+		System.out.println(); 
 	}
 	
 	public static void main (String [] args) {
@@ -70,7 +71,7 @@ public class Flag {
 		color [] colors = {color.red, color.red, color.blue, color.white, color.white, color.red, 
 							color.white, color.blue, color.red, color.blue, color.red}; 
 		
-		flag.InvariantA(colors);
+		flag.InvariantD(colors);
 		flag.printColor(colors);
 	}
 }

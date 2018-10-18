@@ -14,41 +14,49 @@ public class Partitions {
 		System.out.println();
 	}
 	
-	public int partition(int [] nums, int start, int end) { 
-		int pivot = nums[0]; 
-		int left = start; 
-		for (int right = start + 1; right <= end; right++) {
-			if (nums[right] <= pivot) {
-				left++; 
-				int temp = nums[right]; 
-				nums[right] = nums[left]; 
-				nums[left] = temp; 
+	public int partition(int [] nums, int left, int right) { 
+		int initial = left; 
+ 		int pivot = nums[left]; 
+ 		left++; 
+ 		while (left <= right) {
+ 			while (left <= right && nums[left] <= pivot) {
+ 				left++; 
+ 			}
+ 			while (left <= right && nums[right] > pivot) {
+ 				right--; 
+ 			}
+ 			if (left < right) {
+ 				int temp = nums[right]; 
+ 	 			nums[right] = nums[left]; 
+ 	 			nums[left] = temp; 
+ 			}
+ 			
+ 		}
+ 			nums[initial] = nums[right]; 
+ 	 		nums[right] = pivot; 
+ 	 		return right;
+	}
+	
+	public int select (int [] nums, int k) {
+		return selectHelper(nums, k, 0, nums.length - 1); 
+	}
+	
+	public int selectHelper(int [] nums, int k, int left, int right) {
+		int middle = partition(nums, left, right); 
+		while (middle != k - 1) {
+			if (middle < k - 1) {
+				middle = partition(nums, middle + 1, right); 
 			}
-		} 
-		nums[0] = nums[left]; 
-		nums[left] = pivot; 
-		
-		return left; 
+			else if (middle > k - 1) {
+				middle = partition(nums, left, middle - 1); 
+			}
+		}
+		return nums[middle]; 
 	}
 	
-	public int select (int [] nums, int n, int k) {
-		return selectKernel(nums, 0, n - 1, k); 
-	}
-	
-	public int selectKernel(int [] nums, int start, int end, int k) {
-		if (start == end) return nums[start]; 
-		
-		int mid = partition(nums, start, end); 
-		System.out.println(mid);
-		
-		if (k == ((mid) - start + 1)) return nums[(mid)]; 
-		if (k <= ((mid) - start)) return selectKernel(nums, start, (mid) - 1, k); 
-		return selectKernel(nums, (mid) + 1, end, k - (mid - start) - 1); 
-	}
-	
-	public int median (int [] nums, int n) {
-		int middle = n/2; 
-		return select(nums, n, middle); 
+	public int median (int [] nums) {
+		int middle = nums.length/2; 
+		return select(nums, middle); 
 	}
 	
 	public void quickSort (int [] nums, int n) {
@@ -56,7 +64,7 @@ public class Partitions {
 	}
 	
 	public void quickSortKernel(int [] nums, int start, int end) {
-		if (start <= end) {
+		if (start < end) {
 			int mid = partition(nums, start, end); 
 			quickSortKernel(nums, start, mid - 1); 
 			quickSortKernel(nums, mid + 1, end); 
@@ -72,14 +80,27 @@ public class Partitions {
 		Partitions obj = new Partitions(); 
 		
 		
-		obj.partition(arr, 0, 6); 
+		obj.partition(arr, 3, 6); 
 		obj.printArray(arr);
 		System.out.println();
 		
-		int select1 = obj.select(arr, arr.length, 4); 
+		int select1 = obj.select(arr, 4); 
 		System.out.println(select1);
 		System.out.println();
+		obj.printArray(arr);
+		System.out.println();
+		
 		obj.quickSort(arr, arr.length);
+		obj.quickSort(arr2, arr2.length);
+		obj.quickSort(arr3, arr3.length);
+		obj.printArray(arr);
+		System.out.println();
+		obj.printArray(arr2);
+		System.out.println();
+
+		obj.printArray(arr3);
+		System.out.println();
+
 		
 	}
 }
