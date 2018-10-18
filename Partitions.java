@@ -25,7 +25,7 @@ public class Partitions {
  			while (left <= right && nums[right] > pivot) {
  				right--; 
  			}
- 			if (left < right) {
+ 			if (left <= right) {
  				int temp = nums[right]; 
  	 			nums[right] = nums[left]; 
  	 			nums[left] = temp; 
@@ -43,15 +43,9 @@ public class Partitions {
 	
 	public int selectHelper(int [] nums, int k, int left, int right) {
 		int middle = partition(nums, left, right); 
-		while (middle != k - 1) {
-			if (middle < k - 1) {
-				middle = partition(nums, middle + 1, right); 
-			}
-			else if (middle > k - 1) {
-				middle = partition(nums, left, middle - 1); 
-			}
-		}
-		return nums[middle]; 
+		if (middle - left == k - 1) return nums[middle]; 
+		if (middle - left >= k) return selectHelper(nums, k, left, middle - 1); 
+		return selectHelper(nums, k - (middle - left) - 1, middle + 1, right); 
 	}
 	
 	public int median (int [] nums) {
@@ -80,12 +74,14 @@ public class Partitions {
 		Partitions obj = new Partitions(); 
 		
 		
-		obj.partition(arr, 3, 6); 
-		obj.printArray(arr);
-		System.out.println();
-		
-		int select1 = obj.select(arr, 4); 
+		int select1 = obj.select(arr, 6); 
+		int select2 = obj.select(arr2, 2); 
+		int select3 = obj.select(arr2, 6); 
 		System.out.println(select1);
+		System.out.println();
+		System.out.println(select2);
+		System.out.println();
+		System.out.println(select3);
 		System.out.println();
 		obj.printArray(arr);
 		System.out.println();
