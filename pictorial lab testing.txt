@@ -1,0 +1,298 @@
+***********************************************   Test Cases  ********************************************************
+**Testing the Partitions Class
+1. odd length array
+2. even length array
+3. for select, k = nums.length
+4.. already sorted array, ascending
+5. already sorted, descending
+
+***Expected and Actual for Each Case
+1. 
+Expected: For an odd length array,  partition, select, median, and quickSort will all return the results specified by the post conditions. Median will return the value exactly in the middle.
+Actual: Works as expected
+
+2. 
+Expected:  For an even length array,  partition, select, median, and quickSort will all return the results specified by the post conditions. Median will return the value smaller of the two middle values.
+Actual: Works as expected
+
+3. 
+Expected: When k = nums.length, select will return the largest value in the array.
+Actual: Works as expected
+
+4. 
+Expected: When the array is sorted in ascending order, partition, select, median, and quickSort will all return the results specified by the post conditions.
+Actual: Works as expected
+
+5. 
+Expected: When the array is sorted in descending order, partition, select, median, and quickSort will all return the results specified by the post conditions.
+Actual: Works as expected
+
+***Testing the Flag Class
+1. no colors present in the array
+2. only blue present
+3. only red present
+4. only white present
+5. only blue and red
+6. only blue and white
+7. only white and red
+8. all three colors present
+9. already sorted 
+****************************************  Statement of Correctness  ************************************************
+Partitions Class:
+The methods in the Partitions class work properly. We know this by manually looking through the arrays and ensuring that the partitions returned are accurate, select indeed chooses the k-smallest value, the median returns the middle value for odd length arrays and the smaller of the two middle for even arrays, and quickSort returns a sorted array. Additionally, quickSort follows a quick sort algorithm, taking advantage of divide and conquer by partitioning the array and working recursively on smaller and smaller sections of the array. 
+Special cases such as empty array, arrays in ascending and descending orders were also tested. 
+
+Flag Class:
+The Flag class is correct because each test cases yields the expected results, the colors are sorted according to the Dutch flag. 
+Special cases such as empty array, arrays with one or more elements were also tested. 
+
+** OUTPUT: 
+
+*PARTITION CLASS: 
+
+Partition of arr l=3, r=6: 
+
+6
+Print arr after partition: 
+
+1
+-2
+4
+7
+-10
+3
+9
+
+
+Partition of arr3 l=2, r=8: 
+
+8
+Print arr3 after partition: 
+
+9
+8
+1
+6
+5
+4
+3
+2
+7
+
+
+Partition of arr l=0, r=6: 
+
+2
+Print arr after partition: 
+
+-10
+-2
+1
+7
+4
+3
+9
+
+
+Partition of arr2 l=0, r=5: 
+
+0
+Print arr2 after partition: 
+
+1
+2
+3
+4
+5
+6
+7
+8
+
+
+4th smallest element of arr: 
+
+3
+
+8th smallest element of arr2: 
+
+8
+
+Median of arr: 
+
+1
+Median of arr2: 
+
+4
+Print arr after quickSort: 
+
+-10
+-2
+1
+3
+4
+7
+9
+
+
+Print arr2 after quickSort: 
+
+1
+2
+3
+4
+5
+6
+7
+8
+
+
+Print arr3 after quickSort: 
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+*FLAG CLASS: 
+Invariant A sort on empty array of colors: 
+
+
+Invariant D sort on empty array of colors: 
+
+
+Invariant A sort on colors1: 
+
+blue
+
+Invariant D sort on colors1: 
+
+blue
+
+Invariant A sort on colors2: 
+
+red
+
+Invariant D sort on colors2: 
+
+red
+
+Invariant A sort on colors3: 
+
+white
+
+Invariant D sort on colors3: 
+
+white
+
+Invariant A sort on colors4: 
+
+blue
+blue
+blue
+red
+blue
+red
+
+Invariant D sort on colors4: 
+
+red
+red
+blue
+blue
+blue
+blue
+
+Invariant A sort on colors5: 
+
+white
+white
+white
+blue
+blue
+
+Invariant D sort on colors5: 
+
+white
+white
+white
+blue
+blue
+
+Invariant A sort on colors6: 
+
+red
+red
+red
+white
+white
+white
+white
+
+Invariant D sort on colors6: 
+
+red
+red
+red
+white
+white
+white
+white
+
+Invariant A sort on colors7: 
+
+red
+red
+red
+red
+red
+white
+white
+white
+blue
+blue
+blue
+
+Invariant D sort on colors7: 
+
+red
+red
+red
+red
+red
+white
+white
+white
+blue
+blue
+blue
+
+Invariant A sort on colors8: 
+
+red
+red
+white
+white
+white
+blue
+blue
+
+Invariant D sort on colors8: 
+
+red
+red
+white
+white
+white
+blue
+blue
+
+
+
+
+
+
