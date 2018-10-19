@@ -34,25 +34,29 @@ public class Partitions {
 	 * @return an int which represents the index of the pivot after the partition
 	 * */
 	public int partition(int [] nums, int left, int right) { 
-		int initial = left; 
-		int pivot = nums[left]; 
-		left++; 
-		while (left <= right) {
-			while (left <= right && nums[left] <= pivot) {
-				left++; 
+		if (nums.length == 0) 
+			throw new ArrayIndexOutOfBoundsException(" Array is empty");
+		else {
+			int initial = left; 
+			int pivot = nums[left]; 
+			left++; 
+			while (left <= right) {
+				while (left <= right && nums[left] <= pivot) {
+					left++; 
+				}
+				while (left <= right && nums[right] > pivot) {
+					right--; 
+				}
+				if (left < right) {
+					int temp = nums[right]; 
+					nums[right] = nums[left]; 
+					nums[left] = temp; 
+				}
 			}
-			while (left <= right && nums[right] > pivot) {
-				right--; 
-			}
-			if (left < right) {
-				int temp = nums[right]; 
-				nums[right] = nums[left]; 
-				nums[left] = temp; 
-			}
+			nums[initial] = nums[right]; 
+			nums[right] = pivot; 
+			return right;
 		}
-		nums[initial] = nums[right]; 
-		nums[right] = pivot; 
-		return right;
 	}
 
 	/**
@@ -80,16 +84,20 @@ public class Partitions {
 	 * @return the k-smallest element in the array
 	 * */
 	public int selectHelper(int [] nums, int k, int left, int right) {
-		int middle = partition(nums, left, right); 
-		while (middle != k - 1) {
-			if (middle < k - 1) {
-				middle = partition(nums, middle + 1, right); 
+		if (nums.length == 0)
+			throw new ArrayIndexOutOfBoundsException(" Array is empty");
+		else {
+			int middle = partition(nums, left, right); 
+			while (middle != k - 1) {
+				if (middle < k - 1) {
+					middle = partition(nums, middle + 1, right); 
+				}
+				else if (middle > k - 1) {
+					middle = partition(nums, left, middle - 1); 
+				}
 			}
-			else if (middle > k - 1) {
-				middle = partition(nums, left, middle - 1); 
-			}
+			return nums[middle]; 
 		}
-		return nums[middle]; 
 	}
 
 	/**
