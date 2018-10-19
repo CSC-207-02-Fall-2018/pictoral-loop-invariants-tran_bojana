@@ -1,3 +1,27 @@
+/*****************************************************************
+     * Tran Le and Bojana Crnomarkovic                               *
+     * 4098, 3267                                                    *
+     * Program for CSC 207                                           *
+     *   Pictorial Invariants Lab                                    *
+     * Assignment for Friday, October 18th                           *
+     *****************************************************************/
+
+
+    /* ***************************************************************
+     * Academic honesty certification:                               *
+     *   Written/online sources used:                                *
+     *    -http://www.cs.grinnell.edu/~walker/courses/207.fa18/      *
+     *     readings/reading-loop-invariants.shtml                    *
+     *    -http://www.cs.grinnell.edu/~walker/courses/207.fa18/      *
+     *     readings/reading-loop-inv-pic.shtml                       *
+     *   Help obtained                                               *
+     *    -none                                                      *
+     *   My signature below confirms that the above list of sources  *
+     *   is complete AND that I have not talked to anyone else       *
+     *   [e.g., CSC 161 students] about the solution to this problem *
+     *                                                               *
+     *   Signature:                                                  *
+     *****************************************************************/
 package partitions;
 
 /**
@@ -32,6 +56,7 @@ public class Partitions {
 	 * after pivot is larger than pivot
 	 * @param an array of ints, 2 indicies of the array
 	 * @return an int which represents the index of the pivot after the partition
+     * @throws ArrayIndexOutOfBoundsException - if the input array is empty
 	 * */
 	public int partition(int [] nums, int left, int right) { 
 		if (nums.length == 0) 
@@ -82,6 +107,7 @@ public class Partitions {
 	 * @param left - the starting index of the sub-array (inclusive)
 	 * @param right - the ending index of the sub-array (inclusive)
 	 * @return the k-smallest element in the array
+     * @throws ArrayIndexOutOfBoundsException - if the input array is empty
 	 * */
 	public int selectHelper(int [] nums, int k, int left, int right) {
 		if (nums.length == 0)

@@ -1,3 +1,27 @@
+/*****************************************************************
+ * Tran Le and Bojana Crnomarkovic                               *
+ * 4098, 3267                                                    *
+ * Program for CSC 207                                           *
+ *   Pictorial Invariants Lab                                    *
+ * Assignment for Friday, October 18th                           *
+ *****************************************************************/
+
+
+/* ***************************************************************
+ * Academic honesty certification:                               *
+ *   Written/online sources used:                                *
+ *    -http://www.cs.grinnell.edu/~walker/courses/207.fa18/      *
+ *     readings/reading-loop-invariants.shtml                    *
+ *    -http://www.cs.grinnell.edu/~walker/courses/207.fa18/      *
+ *     readings/reading-loop-inv-pic.shtml                       *
+ *   Help obtained                                               *
+ *    -none                                                      *
+ *   My signature below confirms that the above list of sources  *
+ *   is complete AND that I have not talked to anyone else       *
+ *   [e.g., CSC 161 students] about the solution to this problem *
+ *                                                               *
+ *   Signature:                                                  *
+ *****************************************************************/
 package partitions;
 
 /**

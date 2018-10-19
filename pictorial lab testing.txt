@@ -40,7 +40,7 @@ Actual: Works as expected
 ****************************************  Statement of Correctness  ************************************************
 Partitions Class:
 The methods in the Partitions class work properly. We know this by manually looking through the arrays and ensuring that the partitions returned are accurate, select indeed chooses the k-smallest value, the median returns the middle value for odd length arrays and the smaller of the two middle for even arrays, and quickSort returns a sorted array. Additionally, quickSort follows a quick sort algorithm, taking advantage of divide and conquer by partitioning the array and working recursively on smaller and smaller sections of the array. 
-Special cases such as empty array, arrays in ascending and descending orders were also tested. 
+Special cases such as arrays in ascending and descending orders were also tested. Empty arrays passed to methods in Partitions class will cause ArrayIndexOutOfBoundsException to be thrown. A message "Array is empty" will be printed to notify users. 
 
 Flag Class:
 The Flag class is correct because each test cases yields the expected results, the colors are sorted according to the Dutch flag. 
