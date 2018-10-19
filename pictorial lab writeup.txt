@@ -1,0 +1,31 @@
+***********************************  Pictorial Loop Invariants Lab Writeup  *****************************************
+1. The exit condition  for the loop is right < left. This condition is correct because when left == right, there is still 1 element left which is unexamined. When left surpasses right, the end of there are no more elements in the array.
+
+6. Loop condition: 
+	0 <= r_spot <= w_spot <=b_spot <= n, where n is the size of the array.
+
+*** InvariantA: 
+
+Initially, r_spot, w_spot, b_spot are initialized to -1, indicating that the sections for each colors contain no elements. A loop will examine each element in the array of color, one by one, from the left to the right. 
+
+- If the currently examined (curr) element is red, then we increment all r_spot, w_spot, b_spot. Then move the first blue element to the current spot, move the first white element to the b_spot and move curr to the r_spot. 
+
+- If curr is white, increment b_spot and w_spot, then swap the first blue with curr. 
+
+- If curr is blue, increment b_spot so that the blue section contains the newly examined element (a blue). 
+
+
+*** InvariantD: 
+
+Initially, r_spot, w_spot, b_spot are initialized to the size of the array, indicating that the sections for each colors contain no elements, starting from the right.
+A loop will examine each element in the array of color, one by one, from the right to the left. 
+
+- If the currently examined (curr) element is blue, then we decrement all r_spot, w_spot, b_spot. Now the element at b_spot is a white element, the element at w_spot is a red element, the element at r_spot is curr. Swap and move those elements to their correct section. 
+
+- If curr is white, decrement w_spot and r_spot. Now the element at w_spot is a red element, the element at r_spot is curr (a white element). Swap the element at r_spot with the element at the w_spot. 
+
+- If curr is red, decrement w_spot so that the red section contains the newly examined element. 
+
+
+
+
